@@ -69,7 +69,7 @@ This is a [Claude Code plugin](https://docs.claude.com/en/docs/claude-code/plugi
 From inside Claude Code:
 
 ```
-/plugin marketplace add dwmccarthy/agentic-sdlc-plugin
+/plugin marketplace add linuxphile/agentic-sdlc-plugin
 /plugin install agentic-sdlc@agentic-sdlc-plugin
 ```
 
