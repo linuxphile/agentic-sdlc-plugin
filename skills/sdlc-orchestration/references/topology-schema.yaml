@@ -1,0 +1,54 @@
+# topology.yaml — codebase context map
+# Fill this in once at project inception. Every agent reads this file
+# to determine which MCP servers to invoke, which ticket format to use,
+# which wiki to write to, and which CI system to parse.
+# Nothing in the workflow is hardcoded — the topology drives all agent behavior.
+
+repos:
+  - name: string
+    url: string
+    primary_language: string
+    test_framework: string          # jest, pytest, rspec, go test, etc.
+    deployment_target: string       # ecs, k8s, lambda, heroku, etc.
+    compliance_tier: critical | standard | low
+
+# ── TOOLCHAIN DECLARATION ────────────────────────────────────────────────────
+# Choose one option per category. Comment out unused categories.
+
+toolchain:
+
+  source_control:
+    provider: github | gitlab | gitlab-self-hosted
+    org_or_group: string
+    default_branch: main | master
+    branch_protection: true | false
+    pr_or_mr: pr | mr               # GitHub uses PR; GitLab uses MR
+
+  issue_tracking:
+    provider: jira | github-issues | gitlab-issues | linear | none
+    project_key: string             # Jira: "ENG"; GitHub/GitLab: repo name
+    ticket_url_pattern: string      # e.g. https://company.atlassian.net/browse/{id}
+    ticket_id_format: string        # regex: e.g. "[A-Z]+-[0-9]+" or "#[0-9]+"
+
+  wiki:
+    provider: confluence | github-wiki | gitlab-wiki | notion | local | none
+    space_or_path: string           # Confluence space key; or local path
+    adr_location: string            # where Architecture Decision Records live
+    runbook_location: string        # where runbooks live
+
+  ci_cd:
+    provider: github-actions | gitlab-ci | jenkins | circleci | none
+    pipeline_config: string         # path to CI config file
+
+  alerts:
+    provider: pagerduty | opsgenie | slack | none
+    oncall_channel: string
+
+  secrets:
+    provider: vault | aws-secrets-manager | github-secrets | gitlab-ci-vars | none
+
+# ── MCP OVERRIDES ────────────────────────────────────────────────────────────
+# Leave empty unless overriding the default MCP server selection.
+# Agents auto-select MCP servers based on toolchain declarations above.
+
+mcp_overrides: {}

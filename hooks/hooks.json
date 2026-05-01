@@ -1,0 +1,51 @@
+{
+  "PreToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre-write-check.sh",
+          "timeout": 15,
+          "description": "Block secrets files, validate branch naming"
+        }
+      ]
+    },
+    {
+      "matcher": "Bash",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/pre-commit-check.sh",
+          "timeout": 15,
+          "description": "Enforce ticket reference in commit messages"
+        }
+      ]
+    }
+  ],
+  "PostToolUse": [
+    {
+      "matcher": "Write|Edit",
+      "hooks": [
+        {
+          "type": "prompt",
+          "prompt": "A file was just written or edited. Check: (1) Does the file contain any secrets, API keys, passwords, or tokens? If yes, block and explain. (2) Does the file path match a secrets pattern (.env, .pem, credentials.*, secrets.*)? If yes, block and explain. If neither applies, approve.",
+          "timeout": 20
+        }
+      ]
+    }
+  ],
+  "SessionStart": [
+    {
+      "matcher": "",
+      "hooks": [
+        {
+          "type": "command",
+          "command": "bash ${CLAUDE_PLUGIN_ROOT}/hooks/scripts/session-start.sh",
+          "timeout": 10,
+          "description": "Load memory index and topology if present"
+        }
+      ]
+    }
+  ]
+}

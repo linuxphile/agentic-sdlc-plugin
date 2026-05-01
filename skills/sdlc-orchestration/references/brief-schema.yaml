@@ -1,0 +1,26 @@
+# brief-schema.yaml — canonical input format for any work item
+# Every field is consumed by the orchestrator. Do not omit fields —
+# use null or empty lists if not applicable.
+
+id: string                    # ticket/issue ID (format per topology.yaml ticket_id_format)
+type: feature | bug | refactor | spike | security
+
+title: string                 # imperative: "Add X to Y" or "Fix Z in W"
+problem_statement: string     # what user pain or system failure this resolves
+proposed_solution: string     # approach; leave as "TBD" if unknown — orchestrator will propose
+
+context:
+  affected_systems: []        # services, repos, data models touched
+  related_tickets: []         # upstream/downstream dependencies
+  architecture_docs: []       # links to relevant ADRs, design docs
+
+acceptance_criteria: []       # testable, binary pass/fail statements
+non_goals: []                 # explicit scope boundaries (prevents scope creep)
+
+compliance_flags:
+  pii_involved: false         # triggers PII output guardrails + data engineer ARB focus
+  auth_boundary: false        # triggers security review gate + InfoSec ARB focus
+  soc_relevant: false         # triggers audit log enrichment + human gate
+
+estimated_complexity: xs | s | m | l | xl   # drives model selection and ARB threshold
+human_gate_required: false                   # forces human review checkpoint regardless of blast radius

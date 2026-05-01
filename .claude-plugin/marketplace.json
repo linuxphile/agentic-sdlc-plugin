@@ -1,0 +1,28 @@
+{
+  "name": "agentic-sdlc-plugin",
+  "owner": {
+    "name": "Office of the CTO",
+    "url": "https://github.com/dwmccarthy/agentic-sdlc-plugin"
+  },
+  "metadata": {
+    "description": "Marketplace for the agentic-sdlc plugin: brief → blast radius → ARB → bolt → compliant PR",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "agentic-sdlc",
+      "source": "./",
+      "description": "End-to-end agentic SDLC: brief → blast radius → ARB → bolt → compliant PR",
+      "version": "0.1.0",
+      "author": {
+        "name": "Office of the CTO"
+      },
+      "homepage": "https://github.com/dwmccarthy/agentic-sdlc-plugin",
+      "repository": "https://github.com/dwmccarthy/agentic-sdlc-plugin",
+      "license": "Apache-2.0",
+      "keywords": ["sdlc", "engineering", "architecture", "arb", "compliance", "claude-code"],
+      "category": "development",
+      "strict": false
+    }
+  ]
+}

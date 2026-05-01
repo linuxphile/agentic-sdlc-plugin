@@ -1,0 +1,9 @@
+{
+  "name": "agentic-sdlc",
+  "version": "0.1.0",
+  "description": "End-to-end agentic SDLC: brief → blast radius → ARB → bolt → compliant PR",
+  "author": {
+    "name": "Office of the CTO"
+  },
+  "keywords": ["sdlc", "engineering", "architecture", "arb", "compliance", "claude-code"]
+}
