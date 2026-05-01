@@ -76,7 +76,7 @@ From inside Claude Code:
 To install from a local clone instead:
 
 ```bash
-git clone https://github.com/dwmccarthy/agentic-sdlc-plugin.git
+git clone https://github.com/linuxphile/agentic-sdlc-plugin.git
 ```
 
 Then, in Claude Code:
